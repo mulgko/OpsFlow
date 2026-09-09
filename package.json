@@ -1,0 +1,12 @@
+{
+  "name": "opsflow",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

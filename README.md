@@ -6,7 +6,7 @@ OpsFlow는 운영 요청의 등록, 담당자 배정, 처리, 검토, 완료와 
 
 - GitHub 저장소 연결 완료
 - 제품 범위와 기술 구성 확정 전
-- 애플리케이션 및 패키지 미설치
+- 외부 패키지 없이 실행 가능한 초기 화면 구성
 
 ## 기본 업무 흐름
 
@@ -26,4 +26,12 @@ git clone https://github.com/mulgko/OpsFlow.git opsflow
 cd opsflow
 ```
 
-개발 환경과 실행 명령은 기술 구성이 확정된 뒤 추가합니다.
+## 로컬 실행
+
+Node.js 22 이상이 필요합니다.
+
+```bash
+npm run dev
+```
+
+브라우저에서 `http://localhost:3000`을 엽니다. 다른 포트를 사용하려면 `PORT=3001 npm run dev`처럼 실행합니다.
