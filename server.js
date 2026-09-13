@@ -16,7 +16,13 @@ const contentTypes = {
 
 const server = http.createServer(async (request, response) => {
   const pathname = new URL(request.url, `http://${request.headers.host}`).pathname;
-  const requestedPath = pathname === "/" ? "index.html" : pathname.slice(1);
+  const requestedPath = pathname === "/"
+    ? "index.html"
+    : pathname === "/requests/new" || pathname === "/requests/new/"
+      ? "new-request.html"
+    : /^\/requests\/[^/]+\/?$/.test(pathname)
+      ? "request.html"
+      : pathname.slice(1);
   const filePath = normalize(join(publicDir, requestedPath));
 
   if (!filePath.startsWith(publicDir)) {
