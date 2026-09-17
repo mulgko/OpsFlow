@@ -71,3 +71,22 @@ PORT=3001 npm run dev
 ## 현재 제약
 
 현재 버전은 준비 주간 산출물인 정적 프로토타입입니다. 데이터는 브라우저별로 저장되며 서버 데이터베이스, 로그인, 권한, 다중 사용자 동기화는 이후 주차에서 구현합니다.
+
+## HTTP 요청·응답 예제
+
+Node.js 서버의 `/api/requests`에서 같은 리소스에 대한 조회와 생성을 비교할 수 있습니다.
+
+- `GET /api/requests`: 요청 본문 없이 현재 목록을 조회하며 서버 상태를 변경하지 않습니다.
+- `POST /api/requests`: JSON 본문의 제목과 내용으로 새 요청을 생성하고 서버 상태를 변경합니다.
+
+```bash
+curl http://localhost:3000/api/requests
+
+curl -X POST http://localhost:3000/api/requests \
+  -H 'Content-Type: application/json' \
+  -d '{"title":"계약서 검토","description":"신규 계약서 검토가 필요합니다."}'
+```
+
+성공 시 GET은 `200`, POST는 생성된 요청과 함께 `201`을 반환합니다. 필수값이 없거나 JSON 형식이 잘못되면 `400`을 반환합니다.
+
+현재 등록 화면은 `localStorage`를 사용합니다. 다음 CRUD API 작업에서 `public/new-request.js`의 저장 로직을 `POST /api/requests` 호출로, `public/index.js`의 조회 로직을 `GET /api/requests` 호출로 교체할 예정입니다.
