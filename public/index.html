@@ -6,6 +6,7 @@
     <meta name="description" content="OpsFlow 요청 목록" />
     <title>요청 목록 | OpsFlow</title>
     <link rel="stylesheet" href="/styles.css" />
+    <script src="/requests-data.js" defer></script>
     <script src="/index.js" defer></script>
   </head>
   <body>
@@ -20,16 +21,12 @@
       </div>
       <p class="success-notice" id="created-notice" role="status" hidden></p>
       <section class="request-panel" aria-labelledby="request-list-title">
-        <div class="panel-header"><h2 id="request-list-title">전체 요청 <span id="request-count">5</span></h2></div>
+        <div class="panel-header"><h2 id="request-list-title">전체 요청 <span id="request-count">-</span></h2></div>
         <div class="list-header" aria-hidden="true"><span>요청</span><span>담당자</span><span>상태</span><span>생성일</span></div>
-        <div class="request-list">
-          <a class="request-row" href="/requests/REQ-1005"><span class="request-title"><strong>신규 파트너 계약서 검토 요청</strong><small>REQ-1005</small></span><span class="owner">김도경</span><span><span class="status status-review">검토 대기</span></span><time datetime="2026-09-09">2026. 9. 9.</time></a>
-          <a class="request-row" href="/requests/REQ-1004"><span class="request-title"><strong>9월 정산 자료 업로드 확인</strong><small>REQ-1004</small></span><span class="owner">이서연</span><span><span class="status status-progress">진행 중</span></span><time datetime="2026-09-08">2026. 9. 8.</time></a>
-          <a class="request-row" href="/requests/REQ-1003"><span class="request-title"><strong>고객사 온보딩 일정 배정</strong><small>REQ-1003</small></span><span class="owner">박민준</span><span><span class="status status-assigned">배정 완료</span></span><time datetime="2026-09-07">2026. 9. 7.</time></a>
-          <a class="request-row" href="/requests/REQ-1002"><span class="request-title"><strong>서비스 이용 권한 변경</strong><small>REQ-1002</small></span><span class="owner">최유진</span><span><span class="status status-done">완료</span></span><time datetime="2026-09-06">2026. 9. 6.</time></a>
-          <a class="request-row" href="/requests/REQ-1001"><span class="request-title"><strong>월간 운영 리포트 생성 요청</strong><small>REQ-1001</small></span><span class="owner">정현우</span><span><span class="status status-progress">진행 중</span></span><time datetime="2026-09-05">2026. 9. 5.</time></a>
-        </div>
-        <div class="empty-state" hidden><h2>등록된 요청이 없습니다</h2><p>새 요청을 등록하면 이곳에 표시됩니다.</p></div>
+        <div class="request-list" hidden></div>
+        <div class="view-state loading-state" id="loading-state" role="status"><span class="loading-indicator" aria-hidden="true"></span><p>요청을 불러오는 중입니다.</p></div>
+        <div class="view-state empty-state" id="empty-state" hidden><h2>등록된 요청이 없습니다</h2><p>새 요청을 등록하면 이곳에 표시됩니다.</p><a class="secondary-action" href="/requests/new">새 요청 등록</a></div>
+        <div class="view-state error-state" id="error-state" role="alert" hidden><h2>요청을 불러오지 못했습니다</h2><p>저장된 데이터가 올바르지 않습니다. 데이터를 초기화한 뒤 다시 시도해 주세요.</p><button class="secondary-action" id="reset-requests" type="button">데이터 초기화</button></div>
       </section>
     </main>
   </body>

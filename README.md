@@ -90,3 +90,12 @@ curl -X POST http://localhost:3000/api/requests \
 성공 시 GET은 `200`, POST는 생성된 요청과 함께 `201`을 반환합니다. 필수값이 없거나 JSON 형식이 잘못되면 `400`을 반환합니다.
 
 현재 등록 화면은 `localStorage`를 사용합니다. 다음 CRUD API 작업에서 `public/new-request.js`의 저장 로직을 `POST /api/requests` 호출로, `public/index.js`의 조회 로직을 `GET /api/requests` 호출로 교체할 예정입니다.
+
+## 화면 상태 확인
+
+목록과 상세 화면은 같은 요청 데이터 형식을 사용합니다. 개발 중 상태 화면은 쿼리 문자열로 재현할 수 있습니다.
+
+- 목록 로딩: [http://localhost:3000/?state=loading](http://localhost:3000/?state=loading)
+- 빈 목록: [http://localhost:3000/?state=empty](http://localhost:3000/?state=empty)
+- 목록 오류: [http://localhost:3000/?state=error](http://localhost:3000/?state=error)
+- 상세 오류: [http://localhost:3000/requests/REQ-1005?state=error](http://localhost:3000/requests/REQ-1005?state=error)

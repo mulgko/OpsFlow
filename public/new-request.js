@@ -47,6 +47,7 @@ form.addEventListener("submit", (event) => {
     status: "접수",
     statusClass: "status-received",
     createdAt,
+    createdAtIso: now.toISOString().slice(0, 10),
     changes: [[`${createdAt} ${now.toTimeString().slice(0, 5)}`, "요청 생성", "요청자"]],
   });
   localStorage.setItem("opsflow.requests", JSON.stringify(savedRequests));
